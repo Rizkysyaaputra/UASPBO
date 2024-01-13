@@ -3,7 +3,7 @@ import java.sql.*; //fungsi untuk memasukkan komponen sql
 import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import java.util.Date;
 
 public class ObatJFrame extends javax.swing.JFrame {
 
@@ -16,15 +16,17 @@ public class ObatJFrame extends javax.swing.JFrame {
         TampilData();
     }
     
-       
-    //fungsi untuk membersihkan teks
+       public void kadaluarsa(){
+        Date tgl = new Date();
+        txtkalen.setDate(tgl);
+       }
+
     private void Bersih(){
         txtkode.setText("");
         txtnama.setText("");
         txtharga.setText("");
         txtjenis.setText("");
         txtstok.setText("");
-        txtkada.setText("");
         btnsimpan.setText("Simpan");
         txtkode.setEditable(true);
     }
@@ -140,7 +142,7 @@ public class ObatJFrame extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         txtjenis = new javax.swing.JTextField();
-        txtkada = new javax.swing.JTextField();
+        txtkalen = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -241,11 +243,7 @@ public class ObatJFrame extends javax.swing.JFrame {
             }
         });
 
-        txtkada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtkadaActionPerformed(evt);
-            }
-        });
+        txtkalen.setMinSelectableDate(new java.util.Date(-62135791105000L));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -274,15 +272,17 @@ public class ObatJFrame extends javax.swing.JFrame {
                                     .addComponent(txtkode)
                                     .addComponent(txtnama)
                                     .addComponent(txtharga)
-                                    .addComponent(txtjenis, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(txtjenis)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(34, 34, 34)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtstok, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtkada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtstok)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(txtkalen, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
                         .addGap(31, 31, 31))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -294,7 +294,7 @@ public class ObatJFrame extends javax.swing.JFrame {
                     .addComponent(btnbatal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 815, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -327,18 +327,18 @@ public class ObatJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtstok, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
-                    .addComponent(txtkada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                    .addComponent(txtkalen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -347,7 +347,7 @@ public class ObatJFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(338, 338, 338)
+                .addGap(401, 401, 401)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -387,7 +387,7 @@ public class ObatJFrame extends javax.swing.JFrame {
                     txtnama.getText().equals("")||
                     txtharga.getText().equals("")||
                     txtjenis.getText().equals("")||
-                    txtkada.getText().equals("")||
+                    txtkalen.getDate().equals("")||
                     txtstok.getText().equals("")) {
                 JOptionPane.showMessageDialog(null,"Data tidak boleh kosong","Informasi", JOptionPane.INFORMATION_MESSAGE);
                 return;
@@ -406,7 +406,7 @@ public class ObatJFrame extends javax.swing.JFrame {
                             "','"+txtharga.getText() +
                             "','"+txtjenis.getText() +
                             "','"+txtstok.getText() +
-                            "','"+txtkada.getText() + "' )";
+                            "','"+txtkalen.getDate() + "' )";
                     st.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null,"Data Barang Berhasil disimpan");
                     Bersih();
@@ -418,7 +418,7 @@ public class ObatJFrame extends javax.swing.JFrame {
                         "', harga ='" +txtharga.getText()+
                         "', jenis ='" +txtjenis.getText()+
                         "', stok ='" +txtstok.getText()+
-                        "', kadaluarsa ='" +txtkada.getText()+
+                        "', kadaluarsa ='" +txtkalen.getDate()+
                         "' WHERE kode ='" +txtkode.getText()+"'";
                 st.executeUpdate(Update);
                     JOptionPane.showMessageDialog(null,"Data Barang Berhasil diubah");
@@ -436,7 +436,7 @@ public class ObatJFrame extends javax.swing.JFrame {
         txtharga.setText(tbldata.getValueAt(tbldata.getSelectedRow(), 3).toString());
         txtjenis.setText(tbldata.getValueAt(tbldata.getSelectedRow(), 4).toString());
         txtstok.setText(tbldata.getValueAt(tbldata.getSelectedRow(), 5).toString());
-        txtkada.setText(tbldata.getValueAt(tbldata.getSelectedRow(), 6).toString());
+        
         txtkode.setEditable(false);
         btnsimpan.setText("Ubah");
     }//GEN-LAST:event_tbldataMouseClicked
@@ -450,7 +450,7 @@ public class ObatJFrame extends javax.swing.JFrame {
              if (jawab ==0) {
                  try {
                      st = aam.createStatement();
-                     String sql = "DELETE FROM tblbarang WHERE kode = '"+ txtkode.getText()+"'";
+                     String sql = "DELETE FROM tblobat WHERE kode = '"+ txtkode.getText()+"'";
                      st.executeUpdate(sql);
                      JOptionPane.showMessageDialog(null,"Data berhasil dihapus");
                      TampilData();
@@ -492,10 +492,6 @@ public class ObatJFrame extends javax.swing.JFrame {
     private void txtjenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtjenisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtjenisActionPerformed
-
-    private void txtkadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtkadaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtkadaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -553,7 +549,7 @@ public class ObatJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtcari;
     private javax.swing.JTextField txtharga;
     private javax.swing.JTextField txtjenis;
-    private javax.swing.JTextField txtkada;
+    private com.toedter.calendar.JDateChooser txtkalen;
     private javax.swing.JTextField txtkode;
     private javax.swing.JTextField txtnama;
     private javax.swing.JTextField txtstok;
