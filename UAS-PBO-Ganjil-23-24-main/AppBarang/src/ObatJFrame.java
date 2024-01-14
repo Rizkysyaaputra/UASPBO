@@ -414,7 +414,7 @@ public class ObatJFrame extends javax.swing.JFrame {
                 }
             }else{
                 //fungsi untuk mengubah Data
-                String Update = "UPDATE tblbarang SET nama ='" + txtnama.getText() +
+                String Update = "UPDATE tblobat SET nama ='" + txtnama.getText() +
                         "', harga ='" +txtharga.getText()+
                         "', jenis ='" +txtjenis.getText()+
                         "', stok ='" +txtstok.getText()+
